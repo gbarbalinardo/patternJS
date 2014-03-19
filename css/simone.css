@@ -1,0 +1,226 @@
+
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+    font-family: 'Bilbo Swash Caps';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Bilbo Swash Caps'), local('BilboSwashCaps-Regular'), url(http://themes.googleusercontent.com/static/fonts/bilboswashcaps/v4/UB_-crLvhx-PwGKW1oosDppiXHUW_j-Nj6xnA-wH-j0.woff) format('woff');
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: -1px;
+}
+
+.navbar .brand {
+    color: white;/*#eff2eb;*/
+    text-shadow: 0 0px 0 white;
+}
+
+figcaption{
+    display:block;
+    text-align:center;
+    line-height: 1;
+    font-size: 1em;
+    padding: .2em;
+    background-color: rgba(0, 0, 0, .9);
+    opacity: .9;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    text-transform:lowercase;
+}
+
+.panel {
+    right: 3.5em;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    opacity: .8;
+    background: rgba(0, 0, 0, .95);
+}
+
+figcaption .title_fig{
+    display:block;
+    font-size: 1.7em;
+    text-transform:lowercase;
+    /*font-weight: 700;
+    font-style:italic;*/
+    font-family: 'Bilbo Swash Caps', cursive;
+}
+
+
+figcaption:first-letter {
+    font-size: 1.5em;
+    font-family: 'Bilbo Swash Caps',  cursive;
+    text-transform:uppercase;
+}
+
+::-webkit-scrollbar {
+width: 10px;
+height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+-webkit-border-radius: 4px;
+border-radius: 4px;
+background: #202020;
+-webkit-box-shadow: inset 0 0 4px rgba(255, 255, 255, 1);
+}
+
+.description p:nth-child(odd) {
+    color:  white;
+    font-family: Open Sans,serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: justify;
+}
+.description p:nth-child(even) {
+    color: white;
+    font-family: Open Sans,serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: justify;
+}
+
+
+.description h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5em;
+    font-weight:normal;
+    text-align: center;
+    /*font-family: 'Bilbo Swash Caps', cursive;
+    font-size: 2.3em;*/
+}
+
+.description h4:first-letter {
+    font-size: 1.7em;
+    font-family: 'Bilbo Swash Caps', cursive;
+    text-transform:uppercase;
+}
+
+
+.cap-bot figcaption {
+    background-image: url('imgs/back_text.png');
+    background-position-y: 0px;
+    background-repeat: repeat-x;
+    background-color: rgba(0, 0, 0, .0);
+    padding-top: 25px;
+    bottom: -170px;
+}
+
+figure{
+    /*background-color: #232323;*/
+    /*background-image: url('http://95.172.27.250/gert_test/montenapoleonestreet/app/styles/imgs/logo_background.png');*/
+    background-position: center;
+ }
+/*Vignette effect*/
+.mosaic-block {
+    -webkit-box-shadow: inset 2px 4px 10px rgba(0,0,0,0.95);
+    -moz-box-shadow:    inset 2px 4px 10px rgba(0,0,0,0.95);
+    box-shadow:         inset 2px 4px 10px rgba(0,0,0,0.95);
+    line-height: 0;         /* ensure no space between bottom */
+    display: inline-block;  /* don't go wider than image */
+}
+.mosaic-block img {
+    position: relative;
+    z-index: -10;            /* position beneath */
+    background: white;
+
+}
+
+.navbar-in {
+    background-color: rgba(1, 1, 1, 1);
+    height: 35px;
+}
+
+.top-icon{
+    width: 35px;
+    height: 35px;
+}
+
+#search{
+    background-position: -2px 0px;
+}
+
+#wevux{
+    background-position: -2px 0px;
+}
+
+#info {
+    background-position: -2px -2px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 4px rgba(255, 255, 255, 0);
+}
+
+.navigation-bottom {
+    border-top: 0px solid #DDD;
+}
+
+.navbar .brand {
+/*    font-size: 20px;
+    font-family: 'Bilbo Swash Caps',  cursive;
+    letter-spacing: 1px;*/
+    letter-spacing: -1px;
+    opacity: .90;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.25em;
+}
+.navbar .nav > li > a {
+    color: #6F6F6F;
+    text-decoration: none;
+    text-shadow: none;
+}
+#page-footer::after {
+    color: #6F6F6F;
+}
+
+.upperbrand .lowerbrand .singlebrand{
+    top: 2.2em;
+}
+.modal-header {
+    border-bottom: 0px;
+}
+
+.modal-footer {
+    padding: 4px 13px 15px;
+    border-top: 0px;
+    -webkit-box-shadow: inset 0 0px 0 white;
+    -moz-box-shadow: inset 0 0px 0 white;
+    box-shadow: inset 0 0px 0 white;
+}
+
+.modal-body .description{
+    border-top: 0px;
+    border-bottom: 0px;
+}
+
+.modal-header .close {
+    margin-top: -20px;
+}
+
+.modal-footer {
+    /*visibility: hidden;*/
+}
+
+.img-link{
+    position: absolute;
+}
+
+.wrapper-sidePanel {
+    position: absolute;
+    width: 260px;
+    overflow-x: hidden;
+    padding: 2px;
+    margin-top: 2.5em;
+}
