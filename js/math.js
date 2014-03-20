@@ -1,5 +1,10 @@
 
-function script_new(images,height,ratioFather,shuffle,invert){
+
+
+function script_new(images,height){
+    var shuffle =1;
+    var invert = 1;
+    var ratioFather = 1;
     var param;
     param=1 / 1.618;
     maxArea = 16;
@@ -118,7 +123,7 @@ function script_new(images,height,ratioFather,shuffle,invert){
     */
 
     //if (pattern.zero === "0")invertPath(images);
-    console.log(images);
+    //console.log(images);
     /*var key = "height";
     delete images[key];
     key = "length";

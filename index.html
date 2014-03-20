@@ -7,9 +7,81 @@
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+       
+       <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <script type="text/javascript" src="js/math.js"></script>
         <title>FashionJS</title>
     </head>
     <body>
-        Work in progress
+    	<div class="img_container" id="imgs">
+	        <img id="img0" src="img/0.jpg"> 
+	        <img id="img1" src="img/1.jpg"> 
+	        <img id="img2" src="img/2.jpg">
+	        <img id="img3" src="img/3.jpg">
+	        <img id="img4" src="img/4.jpg">
+	        <img id="img5" src="img/5.jpg">
+	        <img id="img6" src="img/6.jpg">
+	        <img id="img7" src="img/7.jpg">
+	        <img id="img8" src="img/8.jpg">
+	        <img id="img9" src="img/9.jpg">
+	        <img id="img10" src="img/10.jpg">
+	        <img id="img11" src="img/11.jpg"> 
+	        <img id="img12" src="img/12.jpg">
+	        <img id="img13" src="img/13.jpg">
+	        <img id="img14" src="img/14.jpg">
+	        <img id="img15" src="img/15.jpg">
+	        <img id="img16" src="img/16.jpg">
+	        <img id="img17" src="img/17.jpg">
+	        <img id="img18" src="img/18.jpg">
+	        <img id="img19" src="img/19.jpg">
+	        <img id="img20" src="img/20.jpg">
+	    </div>
     </body>
+    <footer>
+    <script type="text/javascript">
+    var images;
+		window.onload = function(){
+		
+		var nodeList = document.getElementById("imgs");
+
+		nodeList=nodeList.childNodes[0];
+
+		images = [];
+		while (nodeList.nextElementSibling!=null)
+		  {
+		  	if (nodeList.clientHeight!=undefined){
+		  		width = nodeList.clientWidth;
+		  		height = nodeList.clientHeight;
+		  		source = nodeList.src;
+		  		idd = nodeList.id;
+		  		r = height/width;
+		  		var imgpush = { rectangle: {h: height, w: width, x : 0, y : 0}, picture : {ratio : r, s: source, m: source, l:source, xl:source, id: idd }};	
+		  		images.push(imgpush);
+			}
+		  	
+		  	nodeList=nodeList.nextSibling
+  			
+  			}
+		script_new(images, 700);
+
+		images.forEach(function(image) {
+		  rect = image.rectangle;
+   		  pic= image.picture;
+   		  divTag = document.getElementById(pic.id);
+   		  divTag.style.visibility = "hidden";
+   		  parentDiv = divTag.parentNode;
+			var divtest = document.createElement("div");
+	   		divtest.className ="imgdiv";
+   		  	divtest.style.width = Math.round(rect.w)+"px";
+			divtest.style.height = Math.round(rect.h)+"px";
+			divtest.style.left = Math.round(rect.x)+"px"; 
+			divtest.style.top = Math.round(rect.y)+"px";
+			divtest.style.backgroundImage = "url('"+pic.l+"')";
+			parentDiv.appendChild(divtest);
+		});
+
+		}
+
+	</script>
+	</footer>
 </html>
