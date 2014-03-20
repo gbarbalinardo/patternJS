@@ -1,4 +1,58 @@
+function doScript(height,divId){
+    var pictures;
+    var images = [];
+    var rectangles =[];
+        var nodeList = document.getElementById(divId);
+        pictures = document.getElementById(divId).getElementsByTagName('img');
+        for(i=0; i<pictures.length; i++) {
+            width = pictures[i].clientWidth;
+            heightt = pictures[i].clientHeight;
+            source = pictures[i].src;
+            idd = pictures[i].id;
+            r = heightt/width;
+            var imgpush = { rectangle: {h: heightt, w: width, x : 0, y : 0}, picture : {ratio : r, s: source, m: source, l:source, xl:source, id: idd }};    
+            images.push(imgpush);
+        }
+        /*nodeList=nodeList.childNodes[0];*/
 
+       
+        /*images = [];
+        while (nodeList.nextElementSibling!=null)
+          {
+            if (nodeList.clientHeight!=undefined){
+                width = nodeList.clientWidth;
+                height = nodeList.clientHeight;
+                source = nodeList.src;
+                idd = nodeList.id;
+                r = height/width;
+                var imgpush = { rectangle: {h: height, w: width, x : 0, y : 0}, picture : {ratio : r, s: source, m: source, l:source, xl:source, id: idd }};    
+                images.push(imgpush);
+            }
+            
+            nodeList=nodeList.nextSibling
+            
+            }*/
+        script_new(images, height);
+
+        images.forEach(function(image) {
+          rect = image.rectangle;
+          pic= image.picture;
+          divTag = document.getElementById(pic.id);
+          divTag.style.visibility = "hidden";
+          parentDiv = divTag.parentNode;
+            var divtest = document.createElement("div");
+            divtest.className ="imgdiv";
+
+            divtest.style.position = "absolute";
+            divtest.style.width = Math.round(rect.w)+"px";
+            divtest.style.height = Math.round(rect.h)+"px";
+            divtest.style.left = Math.round(rect.x)+"px"; 
+            divtest.style.top = Math.round(rect.y)+"px";
+            divtest.style.backgroundImage = "url('"+pic.l+"')";
+            parentDiv.appendChild(divtest);
+        });
+
+}
 
 
 function script_new(images,height){
