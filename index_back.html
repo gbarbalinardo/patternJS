@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+      
+       <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <script type="text/javascript" src="js/math.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+        <title>FashionJS</title>
+    </head>
+    <body>
+    	fashionJS: awesome images...
+    	<div class="img_container" style = "height: 300px" id="imgs1">
+	        <img id="img0" src="img/0.jpg"> 
+	        <img id="img1" src="img/1.jpg"> 
+	        <img id="img2" src="img/2.jpg">
+	        <img id="img3" src="img/3.jpg"><div> </div>
+	        <img id="img4" src="img/4.jpg">
+	        <img id="img5" src="img/5.jpg">
+	        <img id="img6" src="img/6.jpg">
+	        <img id="img7" src="img/7.jpg">
+	        <img id="img8" src="img/8.jpg">
+	        <img id="img9" src="img/9.jpg">
+	        <img id="img10" src="img/10.jpg">
+	        <img id="img11" src="img/11.jpg"> 
+	        <img id="img12" src="img/12.jpg">
+	        <img id="img13" src="img/13.jpg">
+	        <img id="img14" src="img/14.jpg">
+	        <img id="img15" src="img/15.jpg">
+	        <img id="img16" src="img/16.jpg">
+	        <img id="img17" src="img/17.jpg">
+	        <img id="img18" src="img/18.jpg">
+	        <img id="img19" src="img/19.jpg">
+	        <img id="img20" src="img/20.jpg">
+	    </div>
+	    <div class="img_container" style = "height: 400px" id="imgs2">
+	        <img id="ximg0" src="img/0.jpg"> 
+	        <img id="ximg1" src="img/1.jpg"> 
+	        <img id="ximg2" src="img/2.jpg">
+	        <img id="ximg3" src="img/3.jpg"><div> </div>
+	        <img id="ximg4" src="img/4.jpg">
+	        <img id="ximg5" src="img/5.jpg">
+	        <img id="ximg6" src="img/6.jpg">
+	        <img id="ximg7" src="img/7.jpg">
+	        <img id="ximg8" src="img/8.jpg">
+	        <img id="ximg9" src="img/9.jpg">
+	        <img id="ximg10" src="img/10.jpg">
+	        <img id="ximg11" src="img/11.jpg"> 
+	        <img id="ximg12" src="img/12.jpg">
+	        <img id="ximg13" src="img/13.jpg">
+	        <img id="ximg14" src="img/14.jpg">
+	        <img id="ximg15" src="img/15.jpg">
+	        <img id="ximg16" src="img/16.jpg">
+	        <img id="ximg17" src="img/17.jpg">
+	        <img id="ximg18" src="img/18.jpg">
+	        <img id="ximg19" src="img/19.jpg">
+	        <img id="ximg20" src="img/20.jpg">
+	    </div>
+    </body>
+
+    <footer>
+    	<script type="text/javascript">
+    	
+
+    	imgs1 = document.getElementById("imgs1");
+    	imgs2 = document.getElementById("imgs2");
+    	height1 = imgs1.clientHeight;
+    	height2 = imgs2.clientHeight;
+    	imgs1.style.position = "relative";
+    	imgs2.style.position = "relative";
+		
+
+		imgs2.style.top = 10 + "px";
+    	
+    	window.onload = function(){
+    		doScript(height1,"imgs1");
+    		doScript(height2,"imgs2");
+    	};	</script>
+	</footer>
+</html>

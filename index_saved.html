@@ -4,9 +4,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>fashion.js</title>
-
-
-       <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
 <div class="img_container" id="imgs1">
@@ -53,7 +50,7 @@ window.onload = function(){
     console.log(imgs);
     var div = document.getElementById("imgs1");
     div.parentNode.removeChild(div);
-    //imgs = combine(imgs);
+    imgs = combine(imgs);
 
     show(imgs);
 
@@ -198,11 +195,7 @@ function importPics(){
         priority = parseFloat(pictures[i].id);
         //box into a div
         var divBox = document.createElement("div");
-        divBox.className = "imgdiv";
         divBox.style.backgroundImage = "url('"+pictures[i].src+"')";
-
-
-        divBox.style.backgroundRepeat = "no-repeat";
         divBox.style.backgroundSize = "100%";
         divBox.style.display = "block";
         divBox.style.float = "left";
@@ -213,7 +206,7 @@ function importPics(){
         totalArea += area(priority);
     }
     for(i=0; i<images.length; i++) {
-        images[i].a = area(images[i].p)/totalArea*1000000;
+        images[i].a = area(images[i].p)/totalArea*10000000;
         images[i].w = Math.sqrt(images[i].a / images[i].r);
 
         images[i].div.style.width = Math.ceil(images[i].w)+"px";
