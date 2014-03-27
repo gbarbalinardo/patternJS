@@ -11,7 +11,7 @@
 <body>
 <div class="img_container" id="imgs1">
 
-            <img id="1" src="img/1.jpg"> 
+            <img id="1" src="img/0.jpg"> 
             <img id="2" src="img/2.jpg">
             <img id="3" src="img/3.jpg">
             <img id="4" src="img/4.jpg">
@@ -25,35 +25,21 @@
             <img id="12" src="img/12.jpg">
             <img id="13" src="img/13.jpg">
             <img id="14" src="img/14.jpg">
-            <!--<img id="15" src="img/15.jpg">
+            <img id="15" src="img/15.jpg">
             <img id="16" src="img/16.jpg">
             <img id="17" src="img/17.jpg">
-            <img id="18" src="img/18.jpg">-->
+            <img id="18" src="img/18.jpg">
 
 	    </div>
   <script>
-/*
-console.assert(true, "I'll pass." );
-console.assert( "truey", "So will I." );
-console.assert( false, "I'll fail." );
-console.assert( null, "So will I." );
-console.log( "Just a simple log", "of", "values.", true );
-console.error( "I'm an error!" );
-*/
-/*arr[1] = "Hege";
-arr[2] = "Stale";
-arr[3] = "Kai Jim";
-arr[4] = "Borge";
-*/
-//arr.splice(2, 0, "Lene");
-//The splice() method adds/removes items to/from an array, and returns the removed item(s).
+
 var imgs = [];
 window.onload = function(){
     imgs = importPics();
     console.log(imgs);
     var div = document.getElementById("imgs1");
     div.parentNode.removeChild(div);
-    //imgs = combine(imgs);
+    imgs = combine(imgs);
 
     show(imgs);
 
@@ -61,129 +47,126 @@ window.onload = function(){
 
 
 function combine(images){
-
-for(k=images.length-1;k>0;k--){
-    console.log(images[k].a+"\n");
-    ca = 0;
-    //Look for the best
-    for (var i=k-1; i>=0; i--){
-        aRight = Math.pow(images[i].r,2)/images[k].r *Math.pow(images[i].w,2);
-        if (Math.pow(images[k].a-aRight,2)<Math.pow(images[k].a-ca,2)){
-          ca = aRight;
-          ci = i;
-          isRight = true;
-        }  
-        aDown = images[k].r *Math.pow(images[i].w,2);
-        if (Math.pow(images[k].a-aDown,2)<Math.pow(images[k].a-ca,2)){
-          ca = aDown;
-          ci = i;
-          isRight = false;
-        }  
-        //console.log("i:"+i+", aright:"+aRight+", adown:"+aDown );
-        
-    }
-    console.log ("closest a: " + ca + ", closest i: "+ ci +" isRight :"+isRight);
-
-    if(isRight){
-        //Update the placed div
-        zoom = images[k].r/images[ci].r*images[k].w/images[ci].w;
-        console.log(zoom);
-        images[k].w = images[ci].w*images[ci].r/images[k].r;
-        images[k].a = Math.pow(images[k].w,2)*images[k].r; 
-        console.log(images[k].a);
-        console.log("w,h: "+images[k].w+" "+Math.sqrt(images[k].a/images[k].w));
-
-        //Resize all the inner divs
-        divs = images[k].div.getElementsByTagName("*");
-        for (j = 0; j<divs.length ; j++) {
-
-
-            hh = parseInt(divs[j].style.height,10);
-            ww = parseInt(divs[j].style.width,10);
-
-            if(hh!=0){
-
-            divs[j].style.height = (hh/zoom)+"px";
-            divs[j].style.width = (ww/zoom)+"px";
-            }
+    for(k=images.length-1;k>0;k--){
+        ca = 0;
+        //Look for the best
+        for (var i=k-1; i>=0; i--){
+            aRight = Math.pow(images[i].r,2)/images[k].r *images[i].a/images[i].r;
+            if (Math.pow(images[k].a-aRight,2)<Math.pow(images[k].a-ca,2)){
+              ca = aRight;
+              ci = i;
+              isRight = true;
+            }  
+            aDown = images[k].r *images[i].a/images[i].r;
+            if (Math.pow(images[k].a-aDown,2)<Math.pow(images[k].a-ca,2)){
+              ca = aDown;
+              ci = i;
+              isRight = false;
+            }  
+            //console.log("i:"+i+", aright:"+aRight+", adown:"+aDown );
+        }
+        //print the chosen area
+        //console.log ("closest a: " + ca + ", closest i: "+ ci +" isRight :"+isRight);
+        rand = Math.random();
             
+        if(isRight){
+            zoom = Math.sqrt(images[ci].a*images[ci].r/(images[k].a*images[k].r));
+            z1 = Math.sqrt(zoom);
+            z2 = 1/Math.sqrt(zoom);
+
+
+            images[k].a = images[k].a*Math.pow(z1,2);
+            resizeChildren(images[k].div, z1);
+
+            images[ci].a = images[ci].a*Math.pow(z2,2);
+            resizeChildren(images[ci].div, z2);
+            //change later        
+            images[ci].div.style.display = "inline-block";
+            images[k].div.style.display = "inline-block";
+            console.log(rand);
+            if(rand>.5) images[k].div.style.position = "absolute";
+            else images[ci].div.style.position = "absolute";
+            //white-space: nowrap
+            //update the combined div
+            ratio = images[ci].r*images[k].r/(images[ci].r+images[k].r);
+            priority = (images[ci].p+images[k].p)/2.0;
         }
-        
-        images[k].div.style.width = (images[k].w)+"px";
-        images[k].div.style.height = (images[ci].w*images[ci].r)+"px";
-        images[ci].div.style.height = (images[ci].w*images[ci].r)+"px";
+        else{
+            //Update the placed div
+            zoom = Math.sqrt(images[ci].a*images[k].r/(images[k].a*images[ci].r));
 
-        
-        images[ci].div.style.display = "inline-block";
-        images[k].div.style.display = "inline-block";
-        images[k].div.style.position = "absolute";
-        //update the combined div
-        width = images[ci].w+images[k].w;
-        ratio = images[ci].r*images[k].r/(images[ci].r+images[k].r);
-        priority = (images[ci].p+images[k].p)/2.0;
-    }
-    else{
-        //Update the placed div
-        zoom = images[ci].w/images[k].w;
-        console.log(zoom);
-        images[k],w = images[ci].w;
-        images[k].a = Math.pow(images[k].w,2)*images[k].r; 
-
-        //Resize all the inner divs
-        divs = images[k].div.getElementsByTagName("*");
-        for (j = 0; j<divs.length ; j++) {
-            hh = parseInt(divs[j].style.height,10);
-            ww = parseInt(divs[j].style.width,10);
+            z1 = Math.sqrt(zoom);
+            z2 = 1/Math.sqrt(zoom);
 
 
-            if(hh!=0){
+            images[k].a = images[k].a*Math.pow(z1,2);
+            resizeChildren(images[k].div, z1);
 
-            divs[j].style.height = (hh*zoom)+"px";
-            divs[j].style.width = (ww*zoom)+"px";
+            images[ci].a = images[ci].a*Math.pow(z2,2);
+            resizeChildren(images[ci].div, z2);
+
+
+            //update the combined div
+            ratio = images[ci].r+images[k].r;
+            priority = (images[ci].p+images[k].p)/2.0;   
+        }
+        divBox = document.createElement("div");
+        var div1 = images[ci].div.cloneNode(true);
+        var div2 = images[k].div.cloneNode(true);
+        if (rand>.5){
+            divBox.appendChild(div1);
+            divBox.appendChild(div2);
+        }
+        else{
+            divBox.appendChild(div2);
+            divBox.appendChild(div1);
+        }
+
+        area = images[k].a+images[ci].a;
+        imgpush = { r : ratio, div: divBox, p: priority, a: area};
+     
+        divBox.style.width = Math.round(Math.sqrt(area/ratio))+"px";
+        //console.log(Math.sqrt(area/ratio));
+        divBox.style.height = Math.round(Math.sqrt(area*ratio))+"px";
+        //changelater
+        divBox.style.display = "block";
+        divBox.style.float = "left";
+        for (var i=k-1;i>=0; i--){
+            if (images[i].a>imgpush.a){
+                break;
             }
-          
         }
-        
-        images[ci].div.style.width = (images[ci].w)+"px";
-        images[k].div.style.width = (images[ci].w)+"px";
-        images[k].div.style.height = (images[k].w*images[k].r)+"px";
-        
-
-        //update the combined div
-        width = images[ci].w;
-        ratio = images[ci].r+images[k].r;
-        priority = (images[ci].p+images[k].p)/2.0;   
+        images.splice(i+1, 0, imgpush);
+        images.splice(ci+1, 1);//TODO: Check why there is +1
+        images.splice(k,1);
     }
-    divBox = document.createElement("div");
-
-    var div1 = images[ci].div.cloneNode(true);
-    divBox.appendChild(div1);
-    var div2 = images[k].div.cloneNode(true);
-    divBox.appendChild(div2);
-
-    //console.log(images[ci].div);
-    //console.log(images[k].div);
-    imgpush = { w: width, r : ratio, div: divBox, p: priority, a: width*width*ratio};
-    //console.log("divBox :");
-    //console.log(divBox);
-    divBox.style.width = (imgpush.w)+"px";
-    divBox.style.height = (imgpush.w*imgpush.r)+"px";
-    divBox.style.display = "block";
-    divBox.style.float = "left";
-    
-    //console.log(imgpush);
-    for (var i=k-1;i>=0; i--){
-        if (images[i].a>imgpush.a){
-            break;
-        }
-    }
-    //console.log(images);
-    images.splice(i+1, 0, imgpush);
-    images.splice(ci+1, 1);//TODO: Check why there is +1
-    images.splice(k,1);
-    //console.log(images);
-}
     return images;
+}
+
+
+function resizeChildren(divv, zoom){
+    divs = divv.getElementsByTagName("*");
+    //if(divs.length==0){
+        //console.log(divv);
+        var h = parseFloat(divv.style.height,10);
+        //console.log(divv.style.height);
+        
+        var w = parseFloat(divv.style.width,10);
+        //console.log(divv.style.width);
+        if(h!=0){
+            divv.style.height = Math.round(h*zoom)+"px";
+            divv.style.width = Math.round(w*zoom)+"px";
+        }
+    //}
+    for (j = 0; j<divs.length ; j++) {
+        hh = parseFloat(divs[j].style.height,10);
+        ww = parseFloat(divs[j].style.width,10);
+        if(hh!=0){
+            divs[j].style.height = Math.round(hh*zoom)+"px";
+            divs[j].style.width = Math.round(ww*zoom)+"px";
+        }
+    }
+    return h*w;
 }
 
 function importPics(){
@@ -192,7 +175,6 @@ function importPics(){
     pictures = document.getElementById("imgs1").getElementsByTagName('img');
     var totalArea = 0;
     for(i=0; i<pictures.length; i++) {
-        //pictures[i].style.visibility = "hidden";
         width = pictures[i].clientWidth;
         ratio = pictures[i].clientHeight/width;
         priority = parseFloat(pictures[i].id);
@@ -200,39 +182,29 @@ function importPics(){
         var divBox = document.createElement("div");
         divBox.className = "imgdiv";
         divBox.style.backgroundImage = "url('"+pictures[i].src+"')";
-
-
+        divBox.innerHTML = priority;
         divBox.style.backgroundRepeat = "no-repeat";
         divBox.style.backgroundSize = "100%";
         divBox.style.display = "block";
         divBox.style.float = "left";
-//        divBox.style.backgroundRepeat = "no-repeat";
-    
         var imgpush = { w: width, r : ratio, div: divBox, p: priority ,a: width*width*ratio};    
         images.push(imgpush);
         totalArea += area(priority);
     }
     for(i=0; i<images.length; i++) {
         images[i].a = area(images[i].p)/totalArea*1000000;
-        images[i].w = Math.sqrt(images[i].a / images[i].r);
-
-        images[i].div.style.width = Math.ceil(images[i].w)+"px";
-        images[i].div.style.height = Math.ceil(images[i].w*images[i].r)+"px";
-
-
+        images[i].div.style.width = Math.round(Math.sqrt(images[i].a / images[i].r))+"px";
+        images[i].div.style.height = Math.round(Math.sqrt(images[i].a * images[i].r))+"px";
     }
-    
     return images;
 }
 
 function show(images){
-
     div = document.createElement("div");
     for(i=0; i<images.length; i++){
         div.appendChild(images[i].div);
     }
     document.body.appendChild(div);
-
 }
 
 function area(priority){
