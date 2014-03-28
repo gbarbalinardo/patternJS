@@ -1,8 +1,7 @@
-FashionJs
+PatternJS
 ====
-This is [*fashionJS*] (http://giuseppe.barbalinardo.com/fashionJS)
+This is [*patternJS*] (http://giuseppe.barbalinardo.com/patternJS)
 by [Giuseppe Barbalinardo](http://giuseppe.barbalinardo.com). 
-Check the [*demo*] (http://giuseppe.barbalinardo.com/fashionJS).
+Check the [*demo*] (http://giuseppe.barbalinardo.com/patternJS).
 
-The project is still under developmnent.
 The final idea is to implement the a showpage which keep into the account the priorities.
