@@ -1,0 +1,54 @@
+body{
+	background-color: white;
+	color: #ec008c;
+/*	text-align: center;*/
+	font-size: 2em;	
+	font-family: 'Fredoka One',arial,helvetica;
+	margin:0;
+	padding:0;
+	font-weight: 300;
+	z-index: 1;
+
+}
+.title{
+	text-align: center;
+}
+.imgdiv{
+-webkit-box-shadow: inset 0px 0px 0px 5px rgba(255,255,255,1);
+-moz-box-shadow: inset 0px 0px 0px 5px rgba(255,255,255,1);
+box-shadow: inset 0px 0px 0px 5px rgba(255,255,255,1);
+	background-size: 100%;
+
+}
+.divdiv{
+	-webkit-box-shadow: inset 0px 0px 0px 5px rgba(255,255,255,1);
+-moz-box-shadow: inset 0px 0px 0px 5px rgba(255,255,255,1);
+box-shadow: inset 0px 0px 0px 5px rgba(255,255,255,1);
+	text-align: center;
+vertical-align: middle;
+
+}
+
+.imgdiv{
+	opacity: 1;
+    -webkit-transform: scale(1,1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 250ms;
+    -moz-transform: scale(1,1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 250ms;
+
+}
+
+.imgdiv :hover{
+  opacity: .7;
+    -webkit-transform: scale(1.05,1.07);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 250ms;
+    -moz-transform: scale(1.05,1.07);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 250ms;
+    position: relative;
+    z-index: 99;
+}
+

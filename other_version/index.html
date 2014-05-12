@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>pattern.js</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/pattern.js"></script>
+<script type="text/javascript" src="js/import.js"></script>
+</head>
+<body>
+<div class = "title">
+
+</div>
+
+<div class="img_container" id="imgs1">
+    <img id="1" src="img/0.jpg"> 
+    <img id="2" src="img/2.jpg">
+    <div>Awesome</div>
+    <img id="3" src="img/3.jpg">
+    <img id="4" src="img/4.jpg">
+    <img id="5" src="img/5.jpg">
+    <div>Gorgeous</div>
+    <div>100%</div>
+    <img id="6" src="img/6.jpg">
+    <img id="7" src="img/7.jpg">
+    <img id="8" src="img/8.jpg">
+    <img id="9" src="img/9.jpg">
+    <img id="10" src="img/10.jpg">
+    <img id="11" src="img/11.jpg"> 
+    <img id="12" src="img/12.jpg">
+    <img id="13" src="img/13.jpg">
+    <img id="14" src="img/14.jpg">
+    <img id="15" src="img/15.jpg">
+    <img id="16" src="img/16.jpg">
+    <img id="17" src="img/17.jpg">
+    <img id="18" src="img/18.jpg">
+
+</div>
+<script>
+var imgs = [];
+window.onload = function(){
+    var div = document.getElementById("imgs1");
+    imgs = importPics(div);
+    //console.log(imgs);
+    div.parentNode.removeChild(div);
+    div = document.createElement("div");
+    document.body.appendChild(div);
+
+    imgs = calculateBestPattern(imgs);
+    imgs.reverse();
+    show(imgs,div);
+    imgs.reverse();
+}
+
+function buttonFunction(){
+    div.parentNode.removeChild(div);
+    div = document.createElement("div");
+    document.body.appendChild(div);
+    imgs = calculateBestPattern(imgs);
+    show(imgs,div);
+    btn = document.getElementById("myButton");
+    btn.parentNode.removeChild(btn);
+    title = document.getElementsByClassName("title")[0];
+    console.log(title);
+    title.innerHTML = "patternJS is an awesome algorithm which calculate how to place them respecting the constrains!";
+}
+</script>
+
+
+</body>
+</html>
